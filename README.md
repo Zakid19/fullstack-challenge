@@ -29,6 +29,7 @@ docker run --name local-postgres -e POSTGRES_USER=dev -e POSTGRES_PASSWORD=dev -
 # Jalankan Redis
 docker run --name local-redis -p 6379:6379 -d redis:7
 
+
 ### Step 2: Jalankan Product-service (NestJS)
 cd product-service
 npm install
@@ -43,3 +44,32 @@ go run main.go
 
 
 Service berjalan di http://localhost:4000.
+
+#Contoh Request API
+Product Service
+
+Create product
+
+curl -X POST http://localhost:3000/products \
+-H "Content-Type: application/json" \
+-d '{"name":"Laptop","price":1000,"qty":5}'
+
+
+Get product
+
+curl http://localhost:3000/products/<product-id>
+
+Order Service
+
+Create order
+
+curl -X POST http://localhost:4000/orders \
+-H "Content-Type: application/json" \
+-d '{"productId":"<product-id>","totalPrice":1000}'
+
+
+Get orders by product
+
+curl http://localhost:4000/orders/product/<product-id>
+
+
