@@ -40,7 +40,7 @@ Service berjalan di http://localhost:3000.
 
 ### Step 3: Jalankan Order-service (Go)
 cd order-service/cmd/server
-go run main.go
+go run main.go handlers.go product_client.go repository.go rabbitmq.go
 
 
 Service berjalan di http://localhost:4000.
